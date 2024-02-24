@@ -55,11 +55,10 @@ router.post('/', upload.single('image'), async (req, res) => {
     tf.dispose([resized, casted, obj]);
 
     // Send back the detection results
-    res.json({ 
-        boxes: boxes.length > 0 ? boxes[0] : [], 
-        classes: classes.length > 0 ? classes[0] : [], 
-        scores: scores.length > 0 ? scores[0] : [] 
-    });
+    res.send(
+        (boxes.length > 0 ? boxes[0] : []), 
+     
+    );
 
     // Optionally, clean up the uploaded file
     fs.unlinkSync(req.file.path);
