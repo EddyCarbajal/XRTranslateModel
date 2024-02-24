@@ -47,7 +47,7 @@ router.post('/', upload.single('image'), async (req, res) => {
     const obj = await model.executeAsync(expanded);
 
     // Assuming obj contains the detection results
-    const boxes = await obj[1].array(0);
+    const boxes = await obj[1].array();
     const classes = await obj[2].array();
     const scores = await obj[4].array();
 
